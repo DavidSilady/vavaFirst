@@ -20,7 +20,6 @@ public class AppState {
         if (DEBUG) {
             System.out.println(output);
         }
-        System.out.println("DEBUG ///");
     }
 
     public Customer getActiveUser() {
