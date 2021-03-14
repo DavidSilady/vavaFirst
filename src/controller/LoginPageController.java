@@ -1,14 +1,13 @@
 package controller;
 
+import controller.abstracts.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.AppState;
 import model.Customer;
 
-public class LoginPageController {
+public class LoginPageController extends Controller {
 
     @FXML
     private TextField loginUsernameField;
@@ -41,12 +40,21 @@ public class LoginPageController {
     private Button registerButton;
 
     @FXML
+    private Label errorLabel;
+
+    public void init() {
+
+    }
+
+    @FXML
     void onLogin(ActionEvent event) {
         if (AppState.getInstance().verifyLogin(
                 loginUsernameField.getText(),
                 loginPasswordField.getText()
         )) {
             AppState.debug("Logged in.");
+        } else {
+            errorLabel.setText("Invalid username or password.");
         }
     }
 
