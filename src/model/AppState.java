@@ -61,8 +61,18 @@ public class AppState {
         return instance;
     }
 
-    public void addCustomer(Customer customer) {
+    private void addCustomer(Customer customer) {
         this.customers.add(customer);
+    }
+
+    public Boolean registerCustomer(Customer newCustomer) {
+        for (Customer customer : this.customers) {
+            if (customer.getUsername().equals(newCustomer.getUsername())) {
+                return false;
+            }
+        }
+        addCustomer(newCustomer);
+        return true;
     }
 
     public Boolean verifyLogin(String username, String password) {

@@ -44,8 +44,9 @@ public class LoginPageController extends Controller {
     @FXML
     private Label errorLabel;
 
-    public void init() {
-    }
+    @FXML Label regStatusLabel;
+
+    public void init() { }
 
     @FXML
     void onLogin(ActionEvent event) throws Exception {
@@ -70,7 +71,11 @@ public class LoginPageController extends Controller {
                 regPasswordField.getText(),
                 regUsernameField.getText()
         );
-        AppState.getInstance().addCustomer(customer);
+        if (AppState.getInstance().registerCustomer(customer)) {
+            regStatusLabel.setText("Registration complete.");
+        } else {
+            regStatusLabel.setText("Username already taken. Choose a different username.");
+        }
         AppState.debug("User registered.");
     }
 
