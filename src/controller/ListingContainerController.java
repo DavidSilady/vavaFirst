@@ -1,5 +1,6 @@
-package view;
+package controller;
 
+import controller.abstracts.Controller;
 import controller.interfaces.ListablePaneController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.interfaces.Listable;
+import view.SceneManager;
 
 import java.util.ArrayList;
 
-public class ListingContainer {
+public class ListingContainerController extends Controller {
 
     @FXML
     private HBox scrollHBox;
@@ -21,7 +23,7 @@ public class ListingContainer {
     private ScrollPane scrollPane;
 
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane rootPane;
 
     @FXML
     private AnchorPane scrollPaneChild;
@@ -33,11 +35,16 @@ public class ListingContainer {
 
     private String itemTemplateName = "";
 
-    public void init(ArrayList<Listable> listableArray, String itemTemplateName) throws Exception {
+    public void populate(ArrayList<Listable> listableArray, String itemTemplateName) throws Exception {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         this.itemTemplateName = itemTemplateName;
         updateListing(listableArray);
+    }
+
+    public void setParameters(int width, int height) {
+        rootPane.setPrefHeight(height);
+        rootPane.setPrefWidth(width);
     }
 
     public ArrayList<Listable> getListableArray() {
