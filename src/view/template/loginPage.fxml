@@ -16,7 +16,7 @@
       <TextField fx:id="regAddressField" layoutX="711.0" layoutY="294.0" prefHeight="25.0" prefWidth="353.0" />
       <TextField fx:id="regCityField" layoutX="858.0" layoutY="346.0" prefHeight="25.0" prefWidth="202.0" />
       <PasswordField fx:id="loginPasswordField" layoutX="87.0" layoutY="219.0" prefHeight="25.0" prefWidth="353.0" />
-      <PasswordField fx:id="regPasswordField" layoutX="711.0" layoutY="447.0" onAction="#onRegister" prefHeight="25.0" prefWidth="353.0" />
+      <PasswordField fx:id="regPasswordField" layoutX="711.0" layoutY="447.0" prefHeight="25.0" prefWidth="353.0" />
       <Text layoutX="87.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text layoutX="89.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <Text layoutX="711.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />

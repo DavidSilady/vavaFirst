@@ -1,22 +1,23 @@
 package model;
 
-public class Product {
+public class ProductType {
     private String name;
     private String description;
     private float price;
-    private int amount;
 
-    public Product(String name, String description, float price, int amount) {
+    public ProductType(String name, String description, float price) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amount = amount;
     }
 
-    public Product(String name, String description, float price) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
+    public ProductsInstance generateInstances(int amount) {
+        return new ProductsInstance(
+                this.name,
+                this.description,
+                this.price,
+                amount
+        );
     }
 
     public String getName() {
@@ -41,13 +42,5 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

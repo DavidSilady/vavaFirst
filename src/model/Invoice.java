@@ -6,12 +6,12 @@ import java.util.Date;
 public class Invoice {
     private Date creationDate;
     private Customer customer;
-    private ArrayList<Product> products;
+    private ArrayList<ProductsInstance> productsInstances;
 
-    public Invoice(Date creationDate, Customer customer, ArrayList<Product> products) {
+    public Invoice(Date creationDate, Customer customer, ArrayList<ProductsInstance> productsInstances) {
         this.creationDate = creationDate;
         this.customer = customer;
-        this.products = products;
+        this.productsInstances = productsInstances;
     }
 
     public Date getCreationDate() {
@@ -30,11 +30,11 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public ArrayList<Product> getProducts() {
-        return products;
+    public ArrayList<ProductsInstance> getProducts() {
+        return productsInstances;
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
+    public void setProducts(ArrayList<ProductsInstance> productsInstances) {
+        this.productsInstances = productsInstances;
     }
 }

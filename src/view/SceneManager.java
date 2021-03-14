@@ -1,5 +1,6 @@
 package view;
 
+import controller.abstracts.Controller;
 import javafx.event.Event;
 import javafx.fxml.*;
 import javafx.scene.*;
@@ -42,11 +43,16 @@ public class SceneManager {
         this.user = user;
     }
 
-    public static void createApp(Stage primaryStage, String templateName, int width, int height) throws IOException {
-        Parent root = FXMLLoader.load(SceneManager.class.getResource("/view/template/" + templateName + ".fxml"));
+    public static FXMLLoader createApp(Stage primaryStage, String templateName, int width, int height) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(SceneManager.class.getResource("/view/template/" + templateName + ".fxml"));
+        Parent root = fxmlLoader.load();
         primaryStage.setTitle(getInstance().appName);
         primaryStage.setScene(new Scene(root, width, height));
         primaryStage.show();
+        Controller controller = fxmlLoader.getController();
+        controller.init();
+        return fxmlLoader;
     }
 
     public static FXMLLoader switchScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
@@ -57,6 +63,8 @@ public class SceneManager {
         Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(fxmlScene);
         stage.show();
+        Controller controller = fxmlLoader.getController();
+        controller.init();
         return fxmlLoader;
     }
 
@@ -69,6 +77,8 @@ public class SceneManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Controller controller = fxmlLoader.getController();
+        controller.init();
         return fxmlLoader;
     }
 
@@ -81,6 +91,8 @@ public class SceneManager {
         stage.setTitle(getInstance().appName + " | " + sceneName);
         stage.setScene(new Scene(root, width, height));
         stage.show();
+        Controller controller = fxmlLoader.getController();
+        controller.init();
         return fxmlLoader;
     }
 
@@ -99,6 +111,8 @@ public class SceneManager {
         }
         stage.setScene(scene);
         stage.show();
+        Controller controller = fxmlLoader.getController();
+        controller.init();
         return fxmlLoader;
     }
 
@@ -111,6 +125,8 @@ public class SceneManager {
         Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.show();
+        Controller controller = fxmlLoader.getController();
+        controller.init();
         return fxmlLoader;
     }
 

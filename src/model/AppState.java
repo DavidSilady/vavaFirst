@@ -7,12 +7,12 @@ public class AppState {
     private static final Boolean DEBUG = true;
     private AppState() {
         this.customers = new ArrayList<>();
-        this.products = new ArrayList<>();
+        this.productsInstances = new ArrayList<>();
         this.invoices = new ArrayList<>();
     };
 
     private ArrayList<Customer> customers;
-    private ArrayList<Product> products;
+    private ArrayList<ProductsInstance> productsInstances;
     private ArrayList<Invoice> invoices;
     private Customer activeUser;
 
@@ -38,12 +38,12 @@ public class AppState {
         this.customers = customers;
     }
 
-    public ArrayList<Product> getProducts() {
-        return products;
+    public ArrayList<ProductsInstance> getProducts() {
+        return productsInstances;
     }
 
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
+    public void setProducts(ArrayList<ProductsInstance> productsInstances) {
+        this.productsInstances = productsInstances;
     }
 
     public ArrayList<Invoice> getInvoices() {
@@ -65,11 +65,10 @@ public class AppState {
         this.customers.add(customer);
     }
 
-
-
     public Boolean verifyLogin(String username, String password) {
         for (Customer customer : this.customers) {
             if (customer.getUsername().equals(username) && customer.getPassword().equals(password)) {
+                this.activeUser = customer;
                 return true;
             }
         }
