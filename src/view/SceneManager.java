@@ -9,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.ProductType;
 import model.User;
 
 import java.io.IOException;
@@ -129,5 +130,4 @@ public class SceneManager {
         controller.init();
         return fxmlLoader;
     }
-
 }

@@ -39,7 +39,7 @@ public class ListingContainerController extends Controller {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         this.itemTemplateName = itemTemplateName;
-        updateListing(listableArray);
+        update(listableArray);
     }
 
     public void setParameters(int width, int height) {
@@ -51,7 +51,7 @@ public class ListingContainerController extends Controller {
         return listableArray;
     }
 
-    public void updateListing(ArrayList<Listable> listableArray) throws Exception {
+    public void update(ArrayList<Listable> listableArray) throws Exception {
         this.listableArray = listableArray;
         // scrollPaneChild.getChildren().clear();
         scrollHBox.getChildren().clear();
@@ -63,7 +63,7 @@ public class ListingContainerController extends Controller {
 
             FXMLLoader fxmlLoader = SceneManager.switchDynamicPane(listingPane, itemTemplateName);
             ListablePaneController controller = fxmlLoader.getController();
-            controller.init(item, this);
+            controller.fillData(item, this);
             listingPanes.add(listingPane);
         }
 

@@ -1,6 +1,10 @@
 package model;
 
-public class ProductType {
+import model.interfaces.Listable;
+
+import java.awt.*;
+
+public class ProductType implements Listable {
     private String name;
     private String description;
     private float price;
@@ -9,6 +13,9 @@ public class ProductType {
         this.name = name;
         this.description = description;
         this.price = price;
+    }
+
+    public ProductType() {
     }
 
     public ProductsInstance generateInstances(int amount) {

@@ -1,5 +1,7 @@
 package model;
 
+import model.interfaces.Listable;
+
 import java.util.ArrayList;
 
 public class AppState {
@@ -7,13 +9,13 @@ public class AppState {
     private static final Boolean DEBUG = true;
     private AppState() {
         this.customers = new ArrayList<>();
-        this.productsInstances = new ArrayList<>();
+        this.productTypes = new ArrayList<>();
         this.invoices = new ArrayList<>();
     };
 
-    private ArrayList<Customer> customers;
-    private ArrayList<ProductsInstance> productsInstances;
-    private ArrayList<Invoice> invoices;
+    private ArrayList<Listable> customers;
+    private ArrayList<Listable> productTypes;
+    private ArrayList<Listable> invoices;
     private Customer activeUser;
 
     public static void debug(String output) {
@@ -30,27 +32,27 @@ public class AppState {
         this.activeUser = activeUser;
     }
 
-    public ArrayList<Customer> getCustomers() {
+    public ArrayList<Listable> getCustomers() {
         return customers;
     }
 
-    public void setCustomers(ArrayList<Customer> customers) {
+    public void setCustomers(ArrayList<Listable> customers) {
         this.customers = customers;
     }
 
-    public ArrayList<ProductsInstance> getProducts() {
-        return productsInstances;
+    public ArrayList<Listable> getProducts() {
+        return productTypes;
     }
 
-    public void setProducts(ArrayList<ProductsInstance> productsInstances) {
-        this.productsInstances = productsInstances;
+    public void setProducts(ArrayList<Listable> productsInstances) {
+        this.productTypes = productsInstances;
     }
 
-    public ArrayList<Invoice> getInvoices() {
+    public ArrayList<Listable> getInvoices() {
         return invoices;
     }
 
-    public void setInvoices(ArrayList<Invoice> invoices) {
+    public void setInvoices(ArrayList<Listable> invoices) {
         this.invoices = invoices;
     }
 
@@ -66,7 +68,8 @@ public class AppState {
     }
 
     public Boolean registerCustomer(Customer newCustomer) {
-        for (Customer customer : this.customers) {
+        for (Listable item : this.customers) {
+            Customer customer = (Customer) item;
             if (customer.getUsername().equals(newCustomer.getUsername())) {
                 return false;
             }
@@ -76,12 +79,21 @@ public class AppState {
     }
 
     public Boolean verifyLogin(String username, String password) {
-        for (Customer customer : this.customers) {
+        for (Listable item : this.customers) {
+            Customer customer = (Customer) item;
             if (customer.getUsername().equals(username) && customer.getPassword().equals(password)) {
                 this.activeUser = customer;
                 return true;
             }
         }
         return false;
+    }
+
+    public void deleteProduct(ProductType productType) {
+        this.productTypes.remove(productType);
+    }
+
+    public void addProductType(ProductType productType) {
+        this.productTypes.add(productType);
     }
 }
