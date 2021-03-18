@@ -25,7 +25,7 @@ public class ProductsPaneController extends Controller {
 
     @FXML
     void createNewProduct(ActionEvent event) throws Exception {
-        AppState.getInstance().addProductType(new ProductType());
+        AppState.getInstance().getActiveUser().addProductType(new ProductType());
         updateListingContainer();
     }
 
@@ -39,12 +39,12 @@ public class ProductsPaneController extends Controller {
 
         listingContainerController.setParameters(1110, 530);
 
-        ArrayList<Listable> productTypes = AppState.getInstance().getProducts();
-        listingContainerController.populate(productTypes, "");
+        ArrayList<Listable> productTypes = AppState.getInstance().getActiveUser().getProducts();
+        listingContainerController.populate(productTypes, "productTypeEditListing");
     }
 
     private void updateListingContainer() throws Exception {
-        ArrayList<Listable> productTypes = AppState.getInstance().getProducts();
+        ArrayList<Listable> productTypes = AppState.getInstance().getActiveUser().getProducts();
         listingContainerController.update(productTypes);
     }
 }

@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class SceneManager {
     private String appName = "";
-    private User user;
     private static SceneManager singleInstance = null;
 
     private SceneManager() { }
@@ -34,14 +33,6 @@ public class SceneManager {
 
     public void setAppName(String appName) {
         this.appName = appName;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public static FXMLLoader createApp(Stage primaryStage, String templateName, int width, int height) throws Exception {

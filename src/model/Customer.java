@@ -5,6 +5,8 @@ import model.interfaces.Listable;
 import model.interfaces.Passable;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Customer implements Listable, Passable, Generable {
     private String name = "";
     private String city = "";
@@ -12,6 +14,9 @@ public class Customer implements Listable, Passable, Generable {
     private String address = "";
     private String password = "";
     private String username = "";
+
+    private ArrayList<Listable> productTypes;
+    private ArrayList<Listable> invoices;
 
     public Customer() { };
 
@@ -22,6 +27,8 @@ public class Customer implements Listable, Passable, Generable {
         this.address = address;
         this.password = password;
         this.username = username;
+        this.productTypes = new ArrayList<>();
+        this.invoices = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -74,5 +81,29 @@ public class Customer implements Listable, Passable, Generable {
         this.city = data.getString("city");
         this.zip = data.getString("zip");
         this.name = data.getString("name");
+    }
+
+    public ArrayList<Listable> getProducts() {
+        return productTypes;
+    }
+
+    public void setProducts(ArrayList<Listable> productsInstances) {
+        this.productTypes = productsInstances;
+    }
+
+    public ArrayList<Listable> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(ArrayList<Listable> invoices) {
+        this.invoices = invoices;
+    }
+
+    public void deleteProduct(ProductType productType) {
+        this.productTypes.remove(productType);
+    }
+
+    public void addProductType(ProductType productType) {
+        this.productTypes.add(productType);
     }
 }

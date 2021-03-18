@@ -9,13 +9,10 @@ public class AppState {
     private static final Boolean DEBUG = true;
     private AppState() {
         this.customers = new ArrayList<>();
-        this.productTypes = new ArrayList<>();
-        this.invoices = new ArrayList<>();
     };
 
     private ArrayList<Listable> customers;
-    private ArrayList<Listable> productTypes;
-    private ArrayList<Listable> invoices;
+
     private Customer activeUser;
 
     public static void debug(String output) {
@@ -40,21 +37,7 @@ public class AppState {
         this.customers = customers;
     }
 
-    public ArrayList<Listable> getProducts() {
-        return productTypes;
-    }
 
-    public void setProducts(ArrayList<Listable> productsInstances) {
-        this.productTypes = productsInstances;
-    }
-
-    public ArrayList<Listable> getInvoices() {
-        return invoices;
-    }
-
-    public void setInvoices(ArrayList<Listable> invoices) {
-        this.invoices = invoices;
-    }
 
     public static AppState getInstance() {
         if (instance == null) {
@@ -89,11 +72,5 @@ public class AppState {
         return false;
     }
 
-    public void deleteProduct(ProductType productType) {
-        this.productTypes.remove(productType);
-    }
 
-    public void addProductType(ProductType productType) {
-        this.productTypes.add(productType);
-    }
 }

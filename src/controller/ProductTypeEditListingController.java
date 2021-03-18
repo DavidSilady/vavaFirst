@@ -27,8 +27,11 @@ public class ProductTypeEditListingController extends Controller implements List
 
     private ProductType productType;
 
+    private ListingContainerController parentContainerController;
+
     @Override
-    public void fillData(Listable item, ListingContainerController parentContainer) {
+    public void fillData(Listable item, ListingContainerController parentContainerController) {
+        this.parentContainerController = parentContainerController;
         productType = (ProductType) item;
         nameField.setText(productType.getName());
         priceField.setText(Float.toString(productType.getPrice()));
@@ -43,7 +46,9 @@ public class ProductTypeEditListingController extends Controller implements List
     }
 
     @FXML
-    public void deleteProduct(ActionEvent actionEvent) {
-        AppState.getInstance().deleteProduct(productType);
+    public void deleteProduct(ActionEvent actionEvent) throws Exception {
+        AppState appState = AppState.getInstance();
+        appState.getActiveUser().deleteProduct(productType);
+        parentContainerController.update(appState.getActiveUser().getProducts());
     }
 }
