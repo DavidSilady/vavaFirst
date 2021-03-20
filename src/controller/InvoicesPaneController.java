@@ -36,7 +36,7 @@ public class InvoicesPaneController extends Controller {
     }
 
     private void openInvoiceCreationWindow() throws Exception {
-        FXMLLoader fxmlLoader = SceneManager.newWindow("createInvoice", 400, 400);
+        FXMLLoader fxmlLoader = SceneManager.newWindow("createInvoice", 600, 400);
         CreateInvoiceController controller = fxmlLoader.getController();;
         controller.setOnExit(this::updateListingContainer);
     }

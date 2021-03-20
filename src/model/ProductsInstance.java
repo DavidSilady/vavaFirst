@@ -1,6 +1,8 @@
 package model;
 
-public class ProductsInstance {
+import model.interfaces.Listable;
+
+public class ProductsInstance implements Listable {
     private String name;
     private String description;
     private float price;

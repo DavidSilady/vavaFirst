@@ -8,9 +8,9 @@ import java.util.Date;
 public class Invoice implements Listable {
     private Date creationDate;
     private Customer customer;
-    private ArrayList<ProductsInstance> productsInstances;
+    private ArrayList<Listable> productsInstances;
 
-    public Invoice(Date creationDate, Customer customer, ArrayList<ProductsInstance> productsInstances) {
+    public Invoice(Date creationDate, Customer customer, ArrayList<Listable> productsInstances) {
         this.creationDate = creationDate;
         this.customer = customer;
         this.productsInstances = productsInstances;
@@ -34,11 +34,15 @@ public class Invoice implements Listable {
         this.customer = customer;
     }
 
-    public ArrayList<ProductsInstance> getProducts() {
+    public ArrayList<Listable> getProducts() {
         return productsInstances;
     }
 
-    public void setProducts(ArrayList<ProductsInstance> productsInstances) {
+    public void setProducts(ArrayList<Listable> productsInstances) {
         this.productsInstances = productsInstances;
+    }
+
+    public void addProductsInstance(ProductsInstance productsInstance) {
+        this.productsInstances.add(productsInstance);
     }
 }
