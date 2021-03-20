@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -18,7 +19,9 @@ import javafx.util.StringConverter;
 import model.AppState;
 import model.Invoice;
 import model.ProductType;
+import model.ProductsInstance;
 import model.interfaces.Listable;
+import view.SceneManager;
 
 import java.util.ArrayList;
 
@@ -31,10 +34,31 @@ public class CreateInvoiceController extends Controller {
 
     private FunctionalHandler onExit = () -> {};
 
+    private Invoice invoice;
+
+    private ListingContainerController listingContainerController;
+
     @Override
     public void init() throws Exception {
+        invoice = new Invoice();
         setupProductsComboBox();
         setupAmountField();
+        setupListingContainer();
+    }
+
+    private void setupListingContainer() throws Exception {
+        FXMLLoader fxmlLoader = SceneManager.switchDynamicPane(productListingPane, "listingContainer");
+        this.listingContainerController = fxmlLoader.getController();
+
+        listingContainerController.setParameters(525, 215);
+
+        ArrayList<Listable> productTypes = invoice.getProducts();
+        listingContainerController.populate(productTypes, "simpleProductInstanceListing");
+    }
+
+    private void updateListingContainer() throws Exception {
+        ArrayList<Listable> productTypes = invoice.getProducts();
+        listingContainerController.update(productTypes);
     }
 
     @SuppressWarnings("unchecked")
@@ -85,10 +109,21 @@ public class CreateInvoiceController extends Controller {
     @FXML
     private TextField amountField;
 
+    private boolean isValidInput() {
+        return productsDropdown.getValue() != null && !amountField.getText().equals("");
+    }
 
     @FXML
-    void handleAddProduct(ActionEvent event) {
-
+    void handleAddProduct(ActionEvent event) throws Exception {
+        if (isValidInput()) {
+            invoice.addProductsInstance(
+                    new ProductsInstance(
+                            productsDropdown.getValue(),
+                            Integer.parseInt(amountField.getText())
+                    )
+            );
+            updateListingContainer();
+        }
     }
 
     @FXML

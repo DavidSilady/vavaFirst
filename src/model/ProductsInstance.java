@@ -15,6 +15,13 @@ public class ProductsInstance implements Listable {
         this.amount = amount;
     }
 
+    public ProductsInstance(ProductType productType, int amount) {
+        this.name = productType.getName();
+        this.description = productType.getDescription();
+        this.price = productType.getPrice();
+        this.amount = amount;
+    }
+
     public ProductsInstance(String name, String description, float price) {
         this.name = name;
         this.description = description;

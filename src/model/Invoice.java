@@ -16,7 +16,10 @@ public class Invoice implements Listable {
         this.productsInstances = productsInstances;
     }
 
-    public Invoice() {    }
+    public Invoice() {
+        creationDate = new Date();
+        productsInstances = new ArrayList<>();
+    }
 
     public Date getCreationDate() {
         return creationDate;
