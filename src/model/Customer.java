@@ -106,4 +106,6 @@ public class Customer implements Listable, Passable, Generable {
     public void addProductType(ProductType productType) {
         this.productTypes.add(productType);
     }
+
+    public void addInvoice(Invoice invoice) { this.invoices.add(invoice); }
 }

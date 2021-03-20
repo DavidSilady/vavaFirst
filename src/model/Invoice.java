@@ -1,9 +1,11 @@
 package model;
 
+import model.interfaces.Listable;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Invoice {
+public class Invoice implements Listable {
     private Date creationDate;
     private Customer customer;
     private ArrayList<ProductsInstance> productsInstances;
@@ -13,6 +15,8 @@ public class Invoice {
         this.customer = customer;
         this.productsInstances = productsInstances;
     }
+
+    public Invoice() {    }
 
     public Date getCreationDate() {
         return creationDate;

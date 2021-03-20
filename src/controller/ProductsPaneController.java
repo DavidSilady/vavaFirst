@@ -31,6 +31,7 @@ public class ProductsPaneController extends Controller {
 
     public void init() throws Exception {
         setupListingContainer();
+        updateListingContainer();
     }
 
     private void setupListingContainer() throws Exception {
