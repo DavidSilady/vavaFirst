@@ -1,13 +1,12 @@
-package model;
+package model.old;
 
-import model.interfaces.Generable;
-import model.interfaces.Listable;
-import model.interfaces.Passable;
+import javafx.util.Pair;
+import model.interfaces.*;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Customer implements Listable, Passable, Generable {
+public class Customer implements Listable, Passable, Generable, Formable {
     private String name = "";
     private String city = "";
     private String zip = "";
@@ -108,4 +107,30 @@ public class Customer implements Listable, Passable, Generable {
     }
 
     public void addInvoice(Invoice invoice) { this.invoices.add(invoice); }
+
+    private Boolean isGay;
+
+    @Override
+    public <T extends Comparable<T>> void setProperties(ArrayList<T> properties) {
+        int i = 0;
+        this.name = (String) properties.get(i++);
+        this.city = (String) properties.get(i++);
+        this.zip = (String) properties.get(i++);
+        this.address = (String) properties.get(i++);
+        this.password = (String) properties.get(i++);
+        this.username = (String) properties.get(i++);
+        this.isGay = (Boolean) properties.get(i);
+    }
+
+    @Override
+    public ArrayList<Pair<FormableTypes, String>> getPropertyPairs() {
+        ArrayList<Pair<FormableTypes, String>> list = new ArrayList<>();
+        list.add(new Pair<>(FormableTypes.STRING, "name"));
+        list.add(new Pair<>(FormableTypes.STRING, "city"));
+        list.add(new Pair<>(FormableTypes.STRING, "zip"));
+        list.add(new Pair<>(FormableTypes.STRING, "address"));
+        list.add(new Pair<>(FormableTypes.STRING, "password"));
+        list.add(new Pair<>(FormableTypes.STRING, "username"));
+        return list;
+    }
 }

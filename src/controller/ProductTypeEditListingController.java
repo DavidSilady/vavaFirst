@@ -7,11 +7,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import model.AppState;
-import model.Customer;
-import model.ProductType;
+import model.Context;
+import model.old.ProductType;
 import model.interfaces.Listable;
-import view.SceneManager;
 
 public class ProductTypeEditListingController extends Controller implements ListablePaneController {
     @FXML
@@ -29,10 +27,21 @@ public class ProductTypeEditListingController extends Controller implements List
 
     private ListingContainerController parentContainerController;
 
+    private boolean isValidInput() {
+        if (!priceField.getText().matches("^[0-9]*\\.?[0-9]*$")) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public void fillData(Listable item, ListingContainerController parentContainerController) {
         this.parentContainerController = parentContainerController;
         productType = (ProductType) item;
+        fillOutTextFields();
+    }
+
+    private void fillOutTextFields() {
         nameField.setText(productType.getName());
         priceField.setText(Float.toString(productType.getPrice()));
         descriptionArea.setText(productType.getDescription());
@@ -40,15 +49,18 @@ public class ProductTypeEditListingController extends Controller implements List
 
     @FXML
     public void updateProduct(ActionEvent actionEvent) {
-        productType.setDescription(descriptionArea.getText());
-        productType.setName(nameField.getText());
-        productType.setPrice(Float.parseFloat(priceField.getText()));
+        if (isValidInput()) {
+            productType.setDescription(descriptionArea.getText());
+            productType.setName(nameField.getText());
+            productType.setPrice(Float.parseFloat(priceField.getText()));
+        }
+        fillOutTextFields();
     }
 
     @FXML
     public void deleteProduct(ActionEvent actionEvent) throws Exception {
-        AppState appState = AppState.getInstance();
-        appState.getActiveUser().deleteProduct(productType);
-        parentContainerController.update(appState.getActiveUser().getProducts());
+        Context context = Context.getInstance();
+        context.getActiveUser().deleteProduct(productType);
+        parentContainerController.update(context.getActiveUser().getProducts());
     }
 }

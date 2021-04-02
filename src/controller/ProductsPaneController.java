@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import model.AppState;
-import model.ProductType;
+import model.Context;
+import model.old.ProductType;
 import model.interfaces.Listable;
 import view.SceneManager;
 
@@ -25,7 +25,7 @@ public class ProductsPaneController extends Controller {
 
     @FXML
     void createNewProduct(ActionEvent event) throws Exception {
-        AppState.getInstance().getActiveUser().addProductType(new ProductType());
+        Context.getInstance().getActiveUser().addProductType(new ProductType());
         updateListingContainer();
     }
 
@@ -40,12 +40,12 @@ public class ProductsPaneController extends Controller {
 
         listingContainerController.setParameters(1110, 530);
 
-        ArrayList<Listable> productTypes = AppState.getInstance().getActiveUser().getProducts();
+        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
         listingContainerController.populate(productTypes, "productTypeEditListing");
     }
 
     private void updateListingContainer() throws Exception {
-        ArrayList<Listable> productTypes = AppState.getInstance().getActiveUser().getProducts();
+        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
         listingContainerController.update(productTypes);
     }
 }

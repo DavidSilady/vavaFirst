@@ -1,4 +1,4 @@
-package model;
+package model.old;
 
 import model.interfaces.Listable;
 
@@ -16,7 +16,8 @@ public class Invoice implements Listable {
         this.productsInstances = productsInstances;
     }
 
-    public Invoice() {
+    public Invoice(Customer owner) {
+        this.customer = owner;
         creationDate = new Date();
         productsInstances = new ArrayList<>();
     }

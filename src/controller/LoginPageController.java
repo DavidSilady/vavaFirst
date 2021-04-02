@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.AppState;
-import model.Customer;
+import model.Context;
+import model.old.Customer;
 import view.SceneManager;
 
 public class LoginPageController extends Controller {
@@ -52,34 +52,50 @@ public class LoginPageController extends Controller {
 
     @FXML
     void onLogin(ActionEvent event) throws Exception {
-        if (AppState.getInstance().verifyLogin(
+        if (Context.getInstance().verifyLogin(
                 loginUsernameField.getText(),
                 loginPasswordField.getText()
         )) {
-            AppState.debug("Logged in.");
+            Context.debug("Logged in.");
             SceneManager.switchScene(event, "mainPage");
         } else {
             errorLabel.setText("Invalid username or password.");
         }
     }
 
-    @FXML
-    void onRegister(ActionEvent event) {
-        Customer customer = new Customer(
-                regFullNameField.getText(),
-                regCityField.getText(),
-                regZipField.getText(),
-                regAddressField.getText(),
-                regPasswordField.getText(),
-                regUsernameField.getText()
-        );
-        if (AppState.getInstance().registerCustomer(customer)) {
-            regStatusLabel.setText("Registration complete.");
-        } else {
-            regStatusLabel.setText("Username already taken. Choose a different username.");
+    private boolean isValidInput() {
+        if (
+                regFullNameField.getText().equals("")
+                || regCityField.getText().equals("")
+                || regZipField.getText().equals("")
+                || regAddressField.getText().equals("")
+                || regPasswordField.getText().equals("")
+        ) {
+            return false;
         }
-        AppState.debug("User registered.");
+        return true;
     }
 
+    @FXML
+    void onRegister(ActionEvent event) {
+        if (isValidInput()) {
+            Customer customer = new Customer(
+                    regFullNameField.getText(),
+                    regCityField.getText(),
+                    regZipField.getText(),
+                    regAddressField.getText(),
+                    regPasswordField.getText(),
+                    regUsernameField.getText()
+            );
+            if (Context.getInstance().registerCustomer(customer)) {
+                regStatusLabel.setText("Registration complete.");
+                Context.debug("User registered.");
+            } else {
+                regStatusLabel.setText("Username already taken. Choose a different username.");
+            }
+        } else {
+            regStatusLabel.setText("All fields are required.");
+        }
+    }
 }
 

@@ -4,23 +4,18 @@ import controller.abstracts.Controller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import model.AppState;
-import model.Invoice;
-import model.ProductType;
-import model.ProductsInstance;
+import model.Context;
 import model.interfaces.Listable;
+import model.old.*;
 import view.SceneManager;
 
 import java.util.ArrayList;
@@ -40,7 +35,9 @@ public class CreateInvoiceController extends Controller {
 
     @Override
     public void init() throws Exception {
-        invoice = new Invoice();
+        Customer activeUser = Context.getInstance().getActiveUser();
+        invoice = new Invoice(activeUser);
+
         setupProductsComboBox();
         setupAmountField();
         setupListingContainer();
@@ -67,7 +64,7 @@ public class CreateInvoiceController extends Controller {
     }
 
     private void setupProductsComboBox() {
-        ArrayList<Listable> productTypes = AppState.getInstance().getActiveUser().getProducts();
+        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
         productsDropdown.setConverter(new StringConverter<ProductType>() {
             @Override
             public String toString(ProductType object) {
@@ -128,7 +125,7 @@ public class CreateInvoiceController extends Controller {
 
     @FXML
     void createAndExit(ActionEvent event) throws Exception {
-        AppState.getInstance().getActiveUser().addInvoice(new Invoice());
+        Context.getInstance().getActiveUser().addInvoice(invoice);
         onExit.execute();
         ((Stage) createButton.getScene().getWindow()).close();
     }

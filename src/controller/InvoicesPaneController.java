@@ -6,8 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import model.AppState;
-import model.Invoice;
+import model.Context;
 import model.interfaces.Listable;
 import view.SceneManager;
 
@@ -47,12 +46,12 @@ public class InvoicesPaneController extends Controller {
 
         listingContainerController.setParameters(1110, 530);
 
-        ArrayList<Listable> invoices = AppState.getInstance().getActiveUser().getInvoices();
+        ArrayList<Listable> invoices = Context.getInstance().getActiveUser().getInvoices();
         listingContainerController.populate(invoices, "invoiceListing");
     }
 
     private void updateListingContainer() throws Exception {
-        ArrayList<Listable> invoices = AppState.getInstance().getActiveUser().getInvoices();
+        ArrayList<Listable> invoices = Context.getInstance().getActiveUser().getInvoices();
         listingContainerController.update(invoices);
     }
 }

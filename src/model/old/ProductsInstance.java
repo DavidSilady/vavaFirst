@@ -1,4 +1,4 @@
-package model;
+package model.old;
 
 import model.interfaces.Listable;
 

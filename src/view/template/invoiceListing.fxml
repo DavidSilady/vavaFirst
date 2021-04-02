@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
 <AnchorPane prefHeight="200.0" prefWidth="1100.0" style="-fx-background-color: #3d3d3d;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InvoiceListingController">
-
+   <children>
+      <AnchorPane fx:id="productListingPane" layoutX="509.0" layoutY="39.0" prefHeight="122.0" prefWidth="525.0" style="-fx-background-color: white;" />
+      <Label layoutX="42.0" layoutY="39.0" text="Creation date:" textFill="WHITE" />
+      <Label fx:id="creationDateLabel" layoutX="130.0" layoutY="39.0" text="00000" textFill="WHITE" />
+      <Label layoutX="42.0" layoutY="66.0" text="Owner:" textFill="WHITE" />
+      <Label fx:id="ownerNameLabel" layoutX="130.0" layoutY="66.0" text="name" textFill="WHITE" />
+   </children>
 </AnchorPane>

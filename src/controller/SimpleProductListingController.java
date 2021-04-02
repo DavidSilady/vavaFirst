@@ -5,7 +5,7 @@ import controller.interfaces.ListablePaneController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
-import model.ProductsInstance;
+import model.old.ProductsInstance;
 import model.interfaces.Listable;
 
 

@@ -1,8 +1,6 @@
-package model;
+package model.old;
 
 import model.interfaces.Listable;
-
-import java.awt.*;
 
 public class ProductType implements Listable {
     private String name;
