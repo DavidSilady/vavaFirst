@@ -44,8 +44,8 @@ public class ProductsPaneController extends Controller {
         listingContainerController.populate(productTypes, "productTypeEditListing");
     }
 
-    private void updateListingContainer() throws Exception {
-        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
-        listingContainerController.update(productTypes);
+        private void updateListingContainer() throws Exception {
+            ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
+            listingContainerController.update(productTypes);
     }
 }

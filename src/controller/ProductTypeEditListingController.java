@@ -35,10 +35,10 @@ public class ProductTypeEditListingController extends Controller implements List
     }
 
     @Override
-    public void fillData(Listable item, ListingContainerController parentContainerController) {
-        this.parentContainerController = parentContainerController;
-        productType = (ProductType) item;
-        fillOutTextFields();
+        public void fillData(Listable item, ListingContainerController parentContainerController) {
+            this.parentContainerController = parentContainerController;
+            productType = (ProductType) item;
+            fillOutTextFields();
     }
 
     private void fillOutTextFields() {
