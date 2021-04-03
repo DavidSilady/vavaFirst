@@ -19,6 +19,9 @@ public class FreelancerListingController extends Controller implements ListableP
     public Label profession;
 
     @FXML
+    public Label nameLabel;
+
+    @FXML
     private Label priceLabel;
 
     @FXML
@@ -110,10 +113,11 @@ public class FreelancerListingController extends Controller implements ListableP
     }
 
     private void fillGenericData() {
+        nameLabel.setText(freelancer.getName());
         priceLabel.setText(Float.toString(freelancer.getPricePerDay()));
         experienceLabel.setText(Float.toString(freelancer.getExperienceInMonths()));
         educationLabel.setText(freelancer.getMostRelevantEducation());
-        availableLabel.setText(Boolean.toString(freelancer.isContracted()));
+        availableLabel.setText(Boolean.toString(!freelancer.isContracted()));
 
         ObservableList<String> certificates = FXCollections.observableArrayList(freelancer.getCertificates());
         certificatesComboBox.setItems(certificates);

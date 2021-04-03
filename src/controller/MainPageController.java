@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Pair;
 import model.Context;
 import model.interfaces.Listable;
 import view.SceneManager;
@@ -81,15 +82,18 @@ public class MainPageController extends Controller {
 
     @FXML
     void addCompany(ActionEvent event) throws Exception {
-        FXMLLoader fxmlLoader = SceneManager.newWindow("createCompany", 600, 274);
+        FXMLLoader fxmlLoader = SceneManager.newWindow("createCompany", 420, 190);
         CreateCompanyController controller = fxmlLoader.getController();
 
         controller.setOnCreate(this::updateCompanies);
     }
 
     @FXML
-    void addContract(ActionEvent event) {
+    void addContract(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = SceneManager.newWindow("createContract", 325, 270);
+        CreateContractController controller = fxmlLoader.getController();
 
+        controller.setOnCreate(this::refreshContractsAndFreelancers);
     }
 
     @FXML
@@ -98,5 +102,17 @@ public class MainPageController extends Controller {
         CreateFreelancerController controller = fxmlLoader.getController();
 
         controller.setOnCreate(this::updateFreelancers);
+    }
+
+    private void refreshContractsAndFreelancers() throws Exception {
+        updateContracts();
+        updateFreelancers();
+    }
+
+    @FXML
+    void refreshAll(ActionEvent event) throws Exception {
+        updateCompanies();
+        updateContracts();
+        updateFreelancers();
     }
 }

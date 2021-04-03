@@ -56,5 +56,6 @@ public class Contract implements Listable {
         }
         company.removeContract(this);
         company = null;
+        Context.getInstance().getContracts().remove(this);
     }
 }

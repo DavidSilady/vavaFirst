@@ -45,7 +45,6 @@ public abstract class Freelancer implements Listable {
     }
 
     public void quitContract() {
-        contract.removeEmployee(this);
         contract = null;
     }
 

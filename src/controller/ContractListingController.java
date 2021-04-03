@@ -16,6 +16,8 @@ import model.interfaces.Listable;
 import model.users.Freelancer;
 import view.SceneManager;
 
+import java.util.ArrayList;
+
 public class ContractListingController extends Controller implements ListablePaneController {
 
     @FXML
@@ -25,13 +27,19 @@ public class ContractListingController extends Controller implements ListablePan
     private ComboBox<Freelancer> contractorsComboBox;
 
     @FXML
-    void deleteContract(ActionEvent event) {
-
+    void deleteContract(ActionEvent event) throws Exception {
+        contract.nullify();
+        parentContainer.update(new ArrayList<>(Context.getInstance().getContracts()));
     }
 
     @FXML
     void removeSelected(ActionEvent event) {
-
+        Freelancer selectedFreelancer = contractorsComboBox.getValue();
+        if (selectedFreelancer != null) {
+            selectedFreelancer.quitContract();
+            contract.removeEmployee(selectedFreelancer);
+        }
+        contractorsComboBox.setItems(FXCollections.observableArrayList(contract.getEmployees()));
     }
 
     Contract contract;
@@ -61,7 +69,7 @@ public class ContractListingController extends Controller implements ListablePan
                 return null;
             }
         });
-        ObservableList<Freelancer> freelancers = FXCollections.observableArrayList(Context.getInstance().getFreelancers());
+        ObservableList<Freelancer> freelancers = FXCollections.observableArrayList(contract.getEmployees());
         contractorsComboBox.setItems(freelancers);
     }
 }

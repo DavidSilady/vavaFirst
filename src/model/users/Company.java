@@ -15,13 +15,16 @@ public class Company implements Listable {
     private ArrayList<Contract> contracts;
 
     public Company(String name, String domain, int numEmployees, Image logo) {
+        this.contracts = new ArrayList<>();
         this.name = name;
         this.domain = domain;
         this.numEmployees = numEmployees;
         this.logo = logo;
     }
 
-    public Company() { }
+    public Company() {
+        this.contracts = new ArrayList<>();
+    }
 
     public ArrayList<Contract> getContracts() {
         return contracts;
@@ -65,5 +68,9 @@ public class Company implements Listable {
 
     public void removeContract(Contract contract) {
         contracts.remove(contract);
+    }
+
+    public void addContract(Contract contract) {
+        contracts.add(contract);
     }
 }
