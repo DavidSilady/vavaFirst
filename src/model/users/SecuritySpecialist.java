@@ -13,7 +13,7 @@ public class SecuritySpecialist extends Freelancer {
 
     public SecuritySpecialist() {super();}
 
-    public Boolean getNbuAuditor() {
+    public Boolean isNbuAuditor() {
         return isNbuAuditor;
     }
 

@@ -35,12 +35,12 @@ public class CreateInvoiceController extends Controller {
 
     @Override
     public void init() throws Exception {
-        Customer activeUser = Context.getInstance().getActiveUser();
-        invoice = new Invoice(activeUser);
-
-        setupProductsComboBox();
-        setupAmountField();
-        setupListingContainer();
+//        Customer activeUser = Context.getInstance().getActiveUser();
+//        invoice = new Invoice(activeUser);
+//
+//        setupProductsComboBox();
+//        setupAmountField();
+//        setupListingContainer();
     }
 
     private void setupListingContainer() throws Exception {
@@ -64,20 +64,20 @@ public class CreateInvoiceController extends Controller {
     }
 
     private void setupProductsComboBox() {
-        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
-        productsDropdown.setConverter(new StringConverter<ProductType>() {
-            @Override
-            public String toString(ProductType object) {
-                return object.getName();
-            }
-            @Override
-            public ProductType fromString(String string) {
-                return null;
-            }
-        });
-        productsDropdown.setItems(FXCollections.observableArrayList(
-                cast(productTypes)
-        ));
+//        ArrayList<Listable> productTypes = Context.getInstance().getActiveUser().getProducts();
+//        productsDropdown.setConverter(new StringConverter<ProductType>() {
+//            @Override
+//            public String toString(ProductType object) {
+//                return object.getName();
+//            }
+//            @Override
+//            public ProductType fromString(String string) {
+//                return null;
+//            }
+//        });
+//        productsDropdown.setItems(FXCollections.observableArrayList(
+//                cast(productTypes)
+//        ));
     }
 
     private void setupAmountField() {
@@ -125,9 +125,9 @@ public class CreateInvoiceController extends Controller {
 
     @FXML
     void createAndExit(ActionEvent event) throws Exception {
-        Context.getInstance().getActiveUser().addInvoice(invoice);
-        onExit.execute();
-        ((Stage) createButton.getScene().getWindow()).close();
+//        Context.getInstance().getActiveUser().addInvoice(invoice);
+//        onExit.execute();
+//        ((Stage) createButton.getScene().getWindow()).close();
     }
 
     protected void setOnExit(FunctionalHandler handler) {

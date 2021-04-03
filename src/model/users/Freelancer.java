@@ -20,7 +20,6 @@ public abstract class Freelancer implements Listable {
         this.certificates = certificates;
     }
 
-
     public Freelancer() {}
 
     public Boolean isContracted() {

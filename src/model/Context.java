@@ -18,8 +18,17 @@ public class Context {
 
     private ArrayList<Freelancer> freelancers;
     private ArrayList<Company> companies;
+    private ArrayList<Contract> contracts;
 
     private Company activeCompany;
+
+    public ArrayList<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(ArrayList<Contract> contracts) {
+        this.contracts = contracts;
+    }
 
     public ArrayList<Freelancer> getFreelancers() {
         return freelancers;
@@ -60,5 +69,9 @@ public class Context {
             instance = new Context();
         }
         return instance;
+    }
+
+    public void addFreelancer(Freelancer freelancer) {
+        freelancers.add(freelancer);
     }
 }

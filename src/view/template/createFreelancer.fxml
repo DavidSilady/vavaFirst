@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="274.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateFreelancerController">
+   <children>
+      <TextField fx:id="priceField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="262.0" promptText="price per day" />
+      <TextField fx:id="experienceField" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="262.0" promptText="experience in months" />
+      <TextField fx:id="educationField" layoutX="14.0" layoutY="79.0" prefHeight="25.0" prefWidth="262.0" promptText="most relevant education" />
+      <TextField fx:id="certificateField" layoutX="14.0" layoutY="146.0" prefHeight="25.0" prefWidth="225.0" promptText="new certificate" />
+      <Button layoutX="238.0" layoutY="146.0" mnemonicParsing="false" onAction="#addCertificate" text="Add" />
+      <ComboBox fx:id="certificateComboBox" layoutX="14.0" layoutY="121.0" prefHeight="25.0" prefWidth="262.0" promptText="Certificates" />
+      <Button layoutX="254.0" layoutY="207.0" mnemonicParsing="false" onAction="#createEntity" prefHeight="42.0" prefWidth="92.0" text="CREATE" />
+      <ComboBox fx:id="professionComboBox" layoutX="300.0" layoutY="14.0" onAction="#handleProfessionChange" prefHeight="25.0" prefWidth="279.0" promptText="Profession" />
+      <TextField fx:id="programmerLanguageField" layoutX="300.0" layoutY="47.0" prefHeight="25.0" prefWidth="279.0" promptText="prefered language" visible="false" />
+      <TextField fx:id="adminTypeField" layoutX="300.0" layoutY="79.0" prefHeight="25.0" prefWidth="279.0" promptText="type (application / network / SAP / etc.)" visible="false" />
+      <TextField fx:id="adminPlatformField" layoutX="300.0" layoutY="109.0" prefHeight="25.0" prefWidth="279.0" promptText="prefered platform/system" visible="false" />
+      <CheckBox fx:id="securityAuditorCheckbox" layoutX="303.0" layoutY="150.0" mnemonicParsing="false" text="NBU auditor" visible="false" />
+   </children>
+</AnchorPane>
