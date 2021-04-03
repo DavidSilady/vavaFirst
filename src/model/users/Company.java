@@ -1,5 +1,6 @@
 package model.users;
 
+import javafx.scene.image.Image;
 import model.Contract;
 import model.interfaces.Listable;
 
@@ -10,10 +11,10 @@ public class Company implements Listable {
     private String name;
     private String domain;
     private int numEmployees;
-    private BufferedImage logo;
+    private Image logo;
     private ArrayList<Contract> contracts;
 
-    public Company(String name, String domain, int numEmployees, BufferedImage logo) {
+    public Company(String name, String domain, int numEmployees, Image logo) {
         this.name = name;
         this.domain = domain;
         this.numEmployees = numEmployees;
@@ -54,11 +55,11 @@ public class Company implements Listable {
         this.numEmployees = numEmployees;
     }
 
-    public BufferedImage getLogo() {
+    public Image getLogo() {
         return logo;
     }
 
-    public void setLogo(BufferedImage logo) {
+    public void setLogo(Image logo) {
         this.logo = logo;
     }
 

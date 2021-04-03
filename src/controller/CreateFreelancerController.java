@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Context;
 import model.enums.FreelancerTypes;
 import model.users.Administrator;
@@ -84,6 +85,7 @@ public class CreateFreelancerController extends Controller {
         if (freelancer != null) {
             Context.getInstance().addFreelancer(freelancer);
             onCreate.execute();
+            ((Stage) professionComboBox.getScene().getWindow()).close();
         }
     }
 

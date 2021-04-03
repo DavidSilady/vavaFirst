@@ -14,6 +14,7 @@ public class Context {
     private Context() {
         this.freelancers = new ArrayList<>();
         this.companies = new ArrayList<>();
+        this.contracts = new ArrayList<>();
     }
 
     private ArrayList<Freelancer> freelancers;

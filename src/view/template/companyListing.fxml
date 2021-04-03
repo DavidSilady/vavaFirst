@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="106.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyListingController">
+   <children>
+      <Label layoutX="91.0" layoutY="13.0" text="Name:" textFill="#bf9494" />
+      <Label fx:id="nameLabel" layoutX="238.0" layoutY="13.0" text="Label" />
+      <Label layoutX="91.0" layoutY="30.0" text="Domain:" textFill="#bf9494" />
+      <Label fx:id="domainLabel" layoutX="238.0" layoutY="30.0" text="Label" />
+      <Label layoutX="91.0" layoutY="47.0" text="Number of employees:" textFill="#bf9494" />
+      <Label fx:id="employeesLabel" layoutX="238.0" layoutY="47.0" text="Label" />
+      <ImageView fx:id="logoImageView" fitHeight="67.0" fitWidth="70.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

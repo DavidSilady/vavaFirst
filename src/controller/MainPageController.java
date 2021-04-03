@@ -39,7 +39,7 @@ public class MainPageController extends Controller {
         freelancersController = fxmlLoader.getController();
 
         ArrayList<Listable> freelancers = new ArrayList<>(Context.getInstance().getFreelancers());
-        freelancersController.populate(freelancers, "TODO");
+        freelancersController.populate(freelancers, "freelancerListing");
     }
 
     private void setupCompanies() throws Exception {
