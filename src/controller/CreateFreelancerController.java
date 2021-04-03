@@ -52,6 +52,9 @@ public class CreateFreelancerController extends Controller {
     private TextField adminPlatformField;
 
     @FXML
+    private TextField nameField;
+
+    @FXML
     private CheckBox securityAuditorCheckbox;
 
     private ObservableList<String> certificates;
@@ -90,34 +93,51 @@ public class CreateFreelancerController extends Controller {
     }
 
     private Freelancer createSecurity() {
-        return new SecuritySpecialist(
-                Float.parseFloat(priceField.getText()),
-                Float.parseFloat(experienceField.getText()),
-                educationField.getText(),
-                new ArrayList<>(certificates),
-                securityAuditorCheckbox.isSelected()
-        );
+        try {
+            return new SecuritySpecialist(
+                    nameField.getText(),
+                    Float.parseFloat(priceField.getText()),
+                    Float.parseFloat(experienceField.getText()),
+                    educationField.getText(),
+                    new ArrayList<>(certificates),
+                    securityAuditorCheckbox.isSelected()
+            );
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private Freelancer createProgrammer() {
-        return new Programmer(
-                Float.parseFloat(priceField.getText()),
-                Float.parseFloat(experienceField.getText()),
-                educationField.getText(),
-                new ArrayList<>(certificates),
-                programmerLanguageField.getText()
-        );
+        try {
+            return new Programmer(
+                    nameField.getText(),
+                    Float.parseFloat(priceField.getText()),
+                    Float.parseFloat(experienceField.getText()),
+                    educationField.getText(),
+                    new ArrayList<>(certificates),
+                    programmerLanguageField.getText()
+            );
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     private Freelancer createAdmin() {
-        return new Administrator(
-                Float.parseFloat(priceField.getText()),
-                Float.parseFloat(experienceField.getText()),
-                educationField.getText(),
-                new ArrayList<>(certificates),
-                adminTypeField.getText(),
-                adminPlatformField.getText()
-        );
+        try {
+            return new Administrator(
+                    nameField.getText(),
+                    Float.parseFloat(priceField.getText()),
+                    Float.parseFloat(experienceField.getText()),
+                    educationField.getText(),
+                    new ArrayList<>(certificates),
+                    adminTypeField.getText(),
+                    adminPlatformField.getText()
+            );
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
     private void resetProfessionVisibility() {

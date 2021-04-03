@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Programmer extends Freelancer{
     private String type;
 
-    public Programmer(float pricePerDay, float experienceInMonths, String mostRelevantEducation, ArrayList<String> certificates, String type) {
-        super(pricePerDay, experienceInMonths, mostRelevantEducation, certificates);
+    public Programmer(String name, float pricePerDay, float experienceInMonths, String mostRelevantEducation, ArrayList<String> certificates, String type) {
+        super(name, pricePerDay, experienceInMonths, mostRelevantEducation, certificates);
         this.type = type;
     }
 

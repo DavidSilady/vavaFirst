@@ -38,6 +38,8 @@ public class MainPageController extends Controller {
         FXMLLoader fxmlLoader = SceneManager.switchDynamicPane(freelancersPane, "listingContainer");
         freelancersController = fxmlLoader.getController();
 
+        freelancersController.setParameters(357, 561);
+
         ArrayList<Listable> freelancers = new ArrayList<>(Context.getInstance().getFreelancers());
         freelancersController.populate(freelancers, "freelancerListing");
     }
@@ -46,16 +48,20 @@ public class MainPageController extends Controller {
         FXMLLoader fxmlLoader = SceneManager.switchDynamicPane(companiesPane, "listingContainer");
         companiesController = fxmlLoader.getController();
 
+        companiesController.setParameters(357, 561);
+
         ArrayList<Listable> companies = new ArrayList<>(Context.getInstance().getCompanies());
-        companiesController.populate(companies, "TODO");
+        companiesController.populate(companies, "companyListing");
     }
 
     private void setupContracts() throws Exception {
         FXMLLoader fxmlLoader = SceneManager.switchDynamicPane(contractsPane, "listingContainer");
         contractsController = fxmlLoader.getController();
 
+        contractsController.setParameters(357, 561);
+
         ArrayList<Listable> contracts = new ArrayList<>(Context.getInstance().getContracts());
-        contractsController.populate(contracts, "TODO");
+        contractsController.populate(contracts, "contractListing");
     }
 
     private void updateContracts() throws Exception {
@@ -74,8 +80,11 @@ public class MainPageController extends Controller {
     }
 
     @FXML
-    void addCompany(ActionEvent event) {
+    void addCompany(ActionEvent event) throws Exception {
+        FXMLLoader fxmlLoader = SceneManager.newWindow("createCompany", 600, 274);
+        CreateCompanyController controller = fxmlLoader.getController();
 
+        controller.setOnCreate(this::updateCompanies);
     }
 
     @FXML

@@ -75,4 +75,8 @@ public class Context {
     public void addFreelancer(Freelancer freelancer) {
         freelancers.add(freelancer);
     }
+
+    public void addCompany(Company company) {
+        companies.add(company);
+    }
 }

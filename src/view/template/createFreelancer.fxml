@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="274.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateFreelancerController">
    <children>
       <TextField fx:id="priceField" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="262.0" promptText="price per day" />
@@ -21,5 +20,6 @@
       <TextField fx:id="adminTypeField" layoutX="300.0" layoutY="79.0" prefHeight="25.0" prefWidth="279.0" promptText="type (application / network / SAP / etc.)" visible="false" />
       <TextField fx:id="adminPlatformField" layoutX="300.0" layoutY="109.0" prefHeight="25.0" prefWidth="279.0" promptText="prefered platform/system" visible="false" />
       <CheckBox fx:id="securityAuditorCheckbox" layoutX="303.0" layoutY="150.0" mnemonicParsing="false" text="NBU auditor" visible="false" />
+      <TextField fx:id="nameField" layoutX="14.0" layoutY="177.0" prefHeight="25.0" prefWidth="262.0" promptText="name" />
    </children>
 </AnchorPane>

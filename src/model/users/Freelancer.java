@@ -7,6 +7,8 @@ import model.interfaces.Listable;
 import java.util.ArrayList;
 
 public abstract class Freelancer implements Listable {
+    private String name;
+
     private float pricePerDay;
     private float experienceInMonths;
     private String mostRelevantEducation;
@@ -18,6 +20,22 @@ public abstract class Freelancer implements Listable {
         this.experienceInMonths = experienceInMonths;
         this.mostRelevantEducation = mostRelevantEducation;
         this.certificates = certificates;
+    }
+
+    public Freelancer(String name, float pricePerDay, float experienceInMonths, String mostRelevantEducation, ArrayList<String> certificates) {
+        this.name = name;
+        this.pricePerDay = pricePerDay;
+        this.experienceInMonths = experienceInMonths;
+        this.mostRelevantEducation = mostRelevantEducation;
+        this.certificates = certificates;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Freelancer() {}
